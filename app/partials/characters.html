@@ -1,0 +1,12 @@
+<div ng-controller="characters">
+    <div>
+        <button ng-click="GetCharacters()" class="btn btn-default dropdown-toggle" type="button" id="charMenu" data-toggle="dropdown"><span class="selected">Characters</span><span class="caret"></span></button>
+        <ul class="dropdown-menu" ng-if="characters.length > 0" aria-labelledby="charMenu">
+            <li ng-repeat="char in characters"><a href="" ng-click="GetCharacterInfo(char.Name)">{{char.Name}}</a></li>
+        </ul>
+    </div>
+    <div ng-if="selectedCharacter != undefined">
+        <div>{{ selectedCharacter.name }}</div>
+        <div>Level {{ selectedCharacter.level}} {{ selectedCharacter.race }} {{ selectedCharacter.profession }}</div>
+    </div>
+</div>
