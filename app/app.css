@@ -38,7 +38,9 @@
 }
 
 .inventoryIcon{
-  padding: 5px;
+  width: 68px;
+  height: 68px;
+  margin: 5px;
 }
 .quantity{
   position: relative;
@@ -72,4 +74,8 @@
 }
 .Legendary{
   border: 2px solid deeppink;
+}
+
+#sections{
+  width: 80%;
 }

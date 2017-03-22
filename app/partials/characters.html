@@ -6,17 +6,40 @@
         </ul>
     </div>
     <div ng-if="selectedCharacter != undefined">
-        <div>{{ selectedCharacter.name }}</div>
-        <div>Level {{ selectedCharacter.level}} {{ selectedCharacter.race }} {{ selectedCharacter.profession }}</div>
-        <div id="inventory">
-            <div ng-if="InventoryItems != undefined && InventoryItems.length > 0">
-                <div ng-repeat="items in InventoryItems | groupBy: 4">
-                    <div class="col-xs-3 inventoryIcon" ng-repeat="item in items">
-                        <img src="{{ item.icon}}" title="{{ item.name }}&#10;{{ item.description}}" class="{{item.rarity}}"/>
-                        <span class="quantity">{{ item.Quantity }}</span>
-                    </div>
-                </div>
-            </div>
+        <div class="row" id="characterInfo">
+            <div style="float: left"><img ng-src="{{selectedCharacter.Icon.icon}}" /></div>
+            <div>{{ selectedCharacter.name }}</div>
+            <div>Level {{ selectedCharacter.level}} {{ selectedCharacter.race }} {{ selectedCharacter.profession }}</div>
+        </div>
+        <div id="sections">
+            <md-content>
+                <md-tabs md-dynamic-height="" md-border-bottom="">
+                    <md-tab label="Inventory">
+                        <md-content class="md-padding">
+                            <div id="inventory">
+                                <div ng-if="InventoryItems != undefined && InventoryItems.length > 0">
+                                    <div ng-repeat="items in InventoryItems | orderBy:'name' | groupBy: 4">
+                                        <div class="col-xs-3" ng-repeat="item in items">
+                                            <img ng-src="{{ item.icon}}" title="{{ item.name }}&#10;{{ item.description}}" class="inventoryIcon {{item.rarity}}"/>
+                                            <span class="quantity">{{ item.Quantity }}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </md-content>
+                    </md-tab>
+                    <md-tab label="Skills">
+                        <md-content class="md-padding">
+                            <div>Coming Soon...</div>
+                        </md-content>
+                    </md-tab>
+                </md-tabs>
+            </md-content>
         </div>
     </div>
 </div>
+<script>
+    $(document).ready(function(){
+        console.log("docuemnt is ready.");
+    });
+</script>
